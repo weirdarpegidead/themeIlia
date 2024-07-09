@@ -1,23 +1,52 @@
 <!-- footer -->
 <div class="grid-container-full footer">
-    <div class="grid-x grid-padding-x">
-      <div class="large-7 cell">
-        <p>Asociación Nacional de Oficiales Penitenciarios. Amunategui 630, Edificio Dolce II, Dpto. 2207, Santiago
-          Centro. Fono/Fax: (+56 2) 2 3207 9513 | <a href="mailto:anopgenchi@gmail.com">Correo: anopgenchi@gmail.com</a>
-          | <a href="<?php echo get_site_url(); ?>/politica-de-privacidad/">Políticas de Privacidad</a> | <a href="<?php echo get_site_url(); ?>/politica-de-cookies/">Políticas de Cookies</a> Sitio desarrollado por <a
-            href="https://ilia.cl">ILIA Consultores Ingeniería y Capacitación</a> ®. 2024</p>
-      </div>
-      <div class="large-5 cell">
-        <ul class="menu align-right social">
-          <li><a href="https://web.facebook.com/anopgenchi/?_rdc=1&_rdr" class="icon"><i class="fa-brands fa-facebook-f"></i></a></li>
-          <li><a href="https://x.com/i/flow/login?redirect_after_login=%2FANOPGendarmeria" class="icon"><i class="fa-brands fa-twitter"></i></a></li>
-          <li><a href="https://www.youtube.com/user/OficialPenitenciario" class="icon"><i class="fa-brands fa-youtube"></i></a></li>
-        </ul>
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <?php $footer_columns = get_theme_mod('footer_columns', 4);
+              for ($i = 1; $i <= $footer_columns; $i++) {
+                  echo '<div class="large-' . esc_attr(12 / $footer_columns) . ' cell">';
+                  if (is_active_sidebar('footer-column-' . $i)) {
+                      dynamic_sidebar('footer-column-' . $i);
+                  } echo '</div>';} ?>
+        </div>
       </div>
     </div>
   </div>
-  <!-- fin footer -->
-  <?php wp_footer()?>
+</div>
+<div class="grid-container-full footer-pie">
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <?php dynamic_sidebar( 'Pie de Pagina' ); ?>
+          <div class="large-5 medium-5 cell">
+            <ul class="menu align-right social">
+              <?php $social_networks = array(
+                      'facebook'  => 'fa-facebook-f',
+                      'twitter'   => 'fa-twitter',
+                      'youtube'   => 'fa-youtube',
+                      'linkedin'  => 'fa-linkedin',
+                      'instagram' => 'fa-instagram',
+                      'pinterest' => 'fa-pinterest'
+                  );
+                  foreach ($social_networks as $network => $icon) {
+                      $link = get_theme_mod("{$network}_link");
+                      if ($link) {
+                          echo '<li><a href="' . esc_url($link) . '" class="icon"><i class="fa-brands ' . esc_attr($icon) . '"></i></a></li>';
+                      }
+                  }
+                ?>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- fin footer -->
+<?php wp_footer()?>
 </body>
 
 </html>
