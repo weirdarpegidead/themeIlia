@@ -7,7 +7,7 @@
       <div class="large-12 cell formulario">
         <div>
           <hr>
-          <h2 class="text-center">Evaluación Ley Karin</h2>
+          <h2 class="text-center">Evaluación del Cumplimiento para la Implementación de la Ley Karin (Ley 21.643)</h2>
           <hr>
           <p>La nueva Ley Karin (Ley 21643) en Chile, que entrará en vigor el 1 de agosto de 2024, introduce medidas significativas para prevenir, investigar y sancionar el acoso laboral, sexual y la violencia en el trabajo. Esta ley modifica el Código del Trabajo y otros cuerpos legales, estableciendo protocolos específicos y obligatorios para las empresas.
             Conoce el nivel de preparación y cumplimiento de tu organización respondiendo las siguientes preguntas.</p>

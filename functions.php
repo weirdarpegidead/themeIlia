@@ -243,7 +243,7 @@ function registrar_evaluacion() {
         $pdf = new FPDF('L', 'mm', 'A4');
         $pdf->AddPage();
         $pdf->SetMargins(30, 100, 30);
-        $pdf->Image (get_template_directory() . '/img/fondo.jpg', 0, 0, 300);
+        $pdf->Image (get_template_directory() . '/img/imagen.png', 0, 0, 300);
         $str = iconv('UTF-8', 'windows-1252', $str);
         $str = mb_convert_encoding($str, 'windows-1252', 'UTF-8');
         $pdf->Ln(75);
@@ -273,11 +273,11 @@ function registrar_evaluacion() {
         $pdf->SetFont('Arial', '', 16);
 
 				if ($resultado === 'Alto') {
-					$pdf->MultiCell(0, 10, 'La empresa está bien posicionada en términos de cumplimiento con la Ley Karin, habiendo implementado la mayoría o todas las medidas necesarias.');
+					$pdf->MultiCell(0, 10, 'La empresa esta bien posicionada en terminos de cumplimiento con la Ley Karin, habiendo implementado la mayoria o todas las medidas necesarias.');
 			} elseif ($resultado === 'Medio') {
-					$pdf->MultiCell(0, 10, 'La empresa ha avanzado en la implementación de varias medidas, pero aún tiene áreas que requieren mejoras para cumplir plenamente con la ley.');
+					$pdf->MultiCell(0, 10, 'La empresa ha avanzado en la implementacion de varias medidas, pero aun tiene areas que requieren mejoras para cumplir plenamente con la ley.');
 			} else {
-					$pdf->MultiCell(0, 10, 'La empresa presenta deficiencias significativas en la implementación de los requerimientos de la Ley Karin y necesita mejorar en varias áreas críticas.');
+					$pdf->MultiCell(0, 10, 'La empresa presenta deficiencias significativas en la implementacion de los requerimientos de la Ley Karin y necesita mejorar en varias areas criticas.');
 			}
 
         // Guardar el PDF en el servidor
@@ -288,7 +288,7 @@ function registrar_evaluacion() {
         // Enviar el PDF por correo
         $to = $email;
         $subject = 'Resultados de la Evaluación Ley Karin';
-        $body = 'Adjunto encontrará un PDF con los resultados de su evaluación.';
+        $body = 'Adjunto encontrará los resultados de su evaluación.';
         $headers = ['Content-Type: text/html; charset=UTF-8'];
         $attachments = [$pdf_path];
 
