@@ -168,7 +168,8 @@ function register_my_menus() {
     register_nav_menus(
       array(
         'header-menu'   => __( 'menu primario' ),
-        'extra-menu'    => __( 'menu secundario' )
+        'extra-menu'    => __( 'menu secundario' ),
+        'more-menu'     => __( 'menu terciario' )
        )
      );
    }
@@ -241,27 +242,42 @@ function registrar_evaluacion() {
         // Generar el PDF
         $pdf = new FPDF('L', 'mm', 'A4');
         $pdf->AddPage();
-        $pdf->SetMargins(25, 100, 20);
-        $pdf->Image (get_template_directory() . '/img/fondoPdf.jpeg', 10, 0, 280);
+        $pdf->SetMargins(30, 100, 30);
+        $pdf->Image (get_template_directory() . '/img/fondo.jpg', 0, 0, 300);
+        $str = iconv('UTF-8', 'windows-1252', $str);
+        $str = mb_convert_encoding($str, 'windows-1252', 'UTF-8');
+        $pdf->Ln(75);
         $pdf->SetFont('Arial', 'B', 16);
-        $pdf->Ln(60);
-        $pdf->Cell(40, 10, 'Resultados de la Evaluacion Ley Karin');
+        $pdf->Cell(40, 10, 'Nombre: ');
+        $pdf->SetFont('Arial', '', 16);
+        $pdf->Cell(40, 10, $nombre );
         $pdf->Ln(10);
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(40, 10, 'Nombre: ' . $nombre);
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(40, 10, 'Email: ');
+        $pdf->SetFont('Arial', '', 16);
+        $pdf->Cell(40, 10, $email);
         $pdf->Ln(10);
-        $pdf->Cell(40, 10, 'Email: ' . $email);
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(40, 10, 'Puntaje: ');
+        $pdf->SetFont('Arial', '', 16);  
+        $pdf->Cell(40, 10, $total . '/48' );
         $pdf->Ln(10);
-        $pdf->Cell(40, 10, 'Resultado: ' . $resultado);
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(40, 10, 'Resultado: ' );
+        $pdf->SetFont('Arial', '', 16);
+        $pdf->Cell(40, 10, 'Nivel ' . $resultado);
+        $pdf->Ln(15);
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(40, 10, 'Sugerencia: ' );
         $pdf->Ln(10);
-        $pdf->Cell(40, 10, 'Puntaje Total: ' . $total);
+        $pdf->SetFont('Arial', '', 16);
 
 				if ($resultado === 'Alto') {
-					$pdf->MultiCell(0, 10, 'Felicidades, su empresa tiene un alto cumplimiento de la Ley Karin.');
+					$pdf->MultiCell(0, 10, 'La empresa está bien posicionada en términos de cumplimiento con la Ley Karin, habiendo implementado la mayoría o todas las medidas necesarias.');
 			} elseif ($resultado === 'Medio') {
-					$pdf->MultiCell(0, 10, 'Su empresa tiene un cumplimiento medio de la Ley Karin, se recomienda mejorar en algunas áreas.');
+					$pdf->MultiCell(0, 10, 'La empresa ha avanzado en la implementación de varias medidas, pero aún tiene áreas que requieren mejoras para cumplir plenamente con la ley.');
 			} else {
-					$pdf->MultiCell(0, 10, 'Su empresa tiene un bajo cumplimiento de la Ley Karin, se recomienda implementar medidas urgentes.');
+					$pdf->MultiCell(0, 10, 'La empresa presenta deficiencias significativas en la implementación de los requerimientos de la Ley Karin y necesita mejorar en varias áreas críticas.');
 			}
 
         // Guardar el PDF en el servidor

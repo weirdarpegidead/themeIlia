@@ -4,12 +4,16 @@
   <!-- contenido principal -->
   <div class="grid-container">
     <div class="grid-x grid-margin-x align-center-middle">
-      <div class="large-12 medium-12 small-12 cell formulario">
+      <div class="large-12 cell formulario">
+        <div>
+          <hr>
+          <h2 class="text-center">Evaluación Ley Karin</h2>
+          <hr>
+          <p>La nueva Ley Karin (Ley 21643) en Chile, que entrará en vigor el 1 de agosto de 2024, introduce medidas significativas para prevenir, investigar y sancionar el acoso laboral, sexual y la violencia en el trabajo. Esta ley modifica el Código del Trabajo y otros cuerpos legales, estableciendo protocolos específicos y obligatorios para las empresas.
+            Conoce el nivel de preparación y cumplimiento de tu organización respondiendo las siguientes preguntas.</p>
+        </div>
         <form action="" id="evaluacionForm">
           <div id="formulario">
-            <h2 class="text-center">Evaluación Ley Karin</h2>
-            <p>La nueva Ley Karin (Ley 21643) en Chile, que entrará en vigor el 1 de agosto de 2024, introduce medidas significativas para prevenir, investigar y sancionar el acoso laboral, sexual y la violencia en el trabajo. Esta ley modifica el Código del Trabajo y otros cuerpos legales, estableciendo protocolos específicos y obligatorios para las empresas.
-            Conoce el nivel de preparación y cumplimiento de tu organización respondiendo las siguientes preguntas.</p>
               <fieldset class="large-5 cell">
                 <legend>1. ¿La empresa ha elaborado y puesto a disposición un protocolo de prevención del acoso laboral,
                   sexual y la violencia en el trabajo, así como la actualización en su reglamento interno?</legend>
@@ -129,7 +133,7 @@
                 <label for="nombre">Nombre:
                   <input type="text" name="nombre" value="" id="nombre" placeholder="Nombre" required />
                 </label>
-                <label for="email">Correo:
+                <label for="email">Correo corporativo:
                   <input type="email" name="email" id="email" value="" required />
                 </label>
               </div>
@@ -139,21 +143,55 @@
           </div>
         </form>
       </div>
+
       <!-- resultado -->
-      <div class="large-12 cell" id="resultado" style="display: none;">
-        <div id="alto" style="display: none;">
-            <h2>Resultado Alto</h2>
-            <p>Felicidades, su empresa tiene un alto cumplimiento de la Ley Karin.</p>
+      <div class="large-12 cell resultados" id="resultado" style="display: none ;">
+
+        <div class="callout large success" id="alto" style="display: none ;">
+          <div class="grid-x align-middle">
+            <div class="small-1 cell">
+              <i class="fa-solid fa-circle-check fa-2xl"></i>
+            </div>
+            <div class="small-11 cell">
+              <h2 class="float">Nivel Alto</h2>
+              <p>La empresa está bien posicionada en términos de cumplimiento con la Ley Karin, habiendo implementado la mayoría o todas las medidas necesarias.</p>
+          <p>La información de la evaluacion ha sido enviada correctamente al correo proporcionado.</p>
+            </div>
+          </div>
         </div>
-        <div id="medio" style="display: none;">
-            <h2>Resultado Medio</h2>
-            <p>Su empresa tiene un cumplimiento medio de la Ley Karin, se recomienda mejorar en algunas áreas.</p>
+
+        <div class="callout large warning" id="medio" style="display: none ;">
+          <div class="grid-x align-middle">
+            <div class="small-1 cell">
+              <i class="fa-solid fa-circle-minus fa-2xl"></i>
+            </div>
+            <div class="small-11 cell">
+              <h2>Nivel Medio</h2>
+              <p>La empresa ha avanzado en la implementación de varias medidas, pero aún tiene áreas que requieren mejoras para cumplir plenamente con la ley.</p>
+              <p>La información de la evaluacion ha sido enviada correctamente al correo proporcionado.</p>
+            </div>
+          </div>
         </div>
-        <div id="bajo" style="display: none;">
-            <h2>Resultado Bajo</h2>
-            <p>Su empresa tiene un bajo cumplimiento de la Ley Karin, se recomienda implementar medidas urgentes.</p>
+
+        <div class="callout large alert" id="bajo" style="display: none ;">
+          <div class="grid-x align-middle">
+            <div class="small-1 cell">
+              <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+            </div>
+            <div class="small-11 cell">
+              <h2>Nivel Bajo</h2>
+              <p>La empresa presenta deficiencias significativas en la implementación de los requerimientos de la Ley Karin y necesita mejorar en varias áreas críticas.</p>
+              <p>La información de la evaluacion ha sido enviada correctamente al correo proporcionado.</p>
+            </div>
+          </div>
         </div>
+
+        <hr>
+
+        <p>Para obtener mas información sobre como implementar las obligaciones correspondientes a la Ley Karin puedes visitar <a href="https://organizacionresiliente.com/">Organización Resiliente</a> y un equipo de profesionales te podra guiar.</p>
+
       </div>
+
     </div>
   </div>
   <!-- fin contenido principal -->
