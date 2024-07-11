@@ -1,4 +1,5 @@
   <?php get_header() ?>
+
   <!-- slider -->
   <div class="grid-container full">
     <div class="grid-x">
@@ -9,16 +10,17 @@
               <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
               <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
             </div>
+
             <ul class="orbit-container">
               <?php
                 // WP_Query arguments
                 $args = array(
-                        'post_type'              => array( 'post' ),
-                        'nopaging'               => false,
-                        'posts_per_page'         => '5',
-                        'order'                  => 'DESC',
-                        'orderby'                => 'date',
-                        'category_name'          => 'slider',
+                  'post_type'              => array( 'post' ),
+                  'nopaging'               => false,
+                  'posts_per_page'         => '5',
+                  'order'                  => 'DESC',
+                  'orderby'                => 'date',
+                  'category_name'          => 'slider',
                 );
                 // The Query
                 $the_query = new WP_Query( $args ); ?>
@@ -32,6 +34,7 @@
               </li>
               <?php endwhile; ?>
             </ul>
+
             <?php wp_reset_postdata(); ?>
             <?php else : ?>
             <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
@@ -42,11 +45,13 @@
     </div>
   </div>
   <!-- fin slider-->
+
   <!-- contenido principal -->
   <div class="grid-container contenido">
     <div class="grid-x grid-padding-x">
       <div class="large-9 cell">
         <h1 class="text-center">Últimas Noticias</h1>
+
         <!-- noticias en dos columnas-->
         <div class="grid-x grid-padding-x">
           <?php
@@ -80,12 +85,14 @@
           <?php endwhile; ?>
         </div>
         <!-- fin noticias en 2 columnas -->
+
         <!-- paginacion -->
         <?php the_posts_pagination( array(
                   'class'       => 'pagination',
                   'aria_label'  => 'Pagination',
         ) ); ?>
         <!-- fin paginacion -->
+
         <?php wp_reset_postdata(); ?>
         <?php else : ?>
         <p><?php esc_html_e( 'Ups, no se encontraron entradas.' ); ?></p>
@@ -97,4 +104,5 @@
     </div>
   </div>
   <!-- fin contenido principal -->
+
   <?php get_footer()?>

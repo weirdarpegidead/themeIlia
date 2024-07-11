@@ -24,6 +24,7 @@
   <div class="grid-container-full">
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell social">
+
         <!-- menu social -->
         <?php
           $menu_position = get_theme_mod('social_menu_position');
@@ -57,12 +58,14 @@
           }
         ?>
         <!-- fin menu social -->
+
       </div>
     </div>
   </div>
 
   <div class="grid-container">
     <div class="grid-x grid-margin-x header">
+
       <!-- logo -->
       <div class="large-2 medium-3 cell logo">
         <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
@@ -98,6 +101,7 @@
         </ul>
       </div>
       <!-- fin mini menu -->
+
     </div>
   </div>
   <!-- fin header -->

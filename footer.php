@@ -4,6 +4,7 @@
     <div class="large-12 cell">
       <div class="grid-container">
         <div class="grid-x grid-padding-x">
+
           <?php $footer_columns = get_theme_mod('footer_columns', 4);
             for ($i = 1; $i <= $footer_columns; $i++) {
               echo '<div class="large-' . esc_attr(12 / $footer_columns) . ' cell footer-widget">';
@@ -11,6 +12,7 @@
                       dynamic_sidebar('footer-column-' . $i);
               } echo '</div>';} 
           ?>
+
         </div>
       </div>
     </div>
@@ -22,9 +24,12 @@
     <div class="large-12 cell">
       <div class="grid-container">
         <div class="grid-x grid-padding-x">
+
           <?php dynamic_sidebar( 'Pie de Pagina' ); ?>
+
           <div class="large-5 medium-5 cell social">
             <ul class="menu align-right">
+
               <?php $social_networks = array(
                 'facebook'  => 'fa-facebook-f',
                 'twitter'   => 'fa-twitter',
@@ -39,6 +44,7 @@
                   echo '<li><a href="' . esc_url($link) . '" class="icon"><i class="fa-brands ' . esc_attr($icon) . '"></i></a></li>';
                 }}
               ?>
+
             </ul>
           </div>
         </div>
