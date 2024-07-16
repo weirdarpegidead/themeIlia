@@ -66,6 +66,7 @@ function mytheme_customize_register( $wp_customize ) {
             'right' => __('Derecha', 'mytheme'),
         ),
     ));
+
     // Sección para el footer
     $wp_customize->add_section('footer_section', array(
         'title'    => __('Footer', 'mytheme'),
@@ -77,7 +78,6 @@ function mytheme_customize_register( $wp_customize ) {
         'default' => 4,
         'sanitize_callback' => 'absint',
     ));
-
     $wp_customize->add_control('footer_columns', array(
         'label'   => __('Número de columnas del footer', 'mytheme'),
         'section' => 'footer_section',
@@ -90,7 +90,6 @@ function mytheme_customize_register( $wp_customize ) {
         ),
     ));
 }
-
 function mytheme_sanitize_position($input) {
     $valid = array('left', 'right');
     return in_array($input, $valid) ? $input : 'right';
@@ -104,7 +103,7 @@ function themeilia_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'HomeSidebar', 'Theme Ilia' ),
 		'id'            => 'primary',
-		'before_widget' => '<div class="sidebar text-center">',
+		'before_widget' => '<div class="sidebar">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
@@ -159,6 +158,7 @@ the_post_thumbnail( 'medium' );        // Medium resolution (300 x 300 max heigh
 the_post_thumbnail( 'medium_large' );  // Medium Large (added in WP 4.4) resolution (768 x 0 infinite height)
 the_post_thumbnail( 'large' );         // Large resolution (1024 x 1024 max height 1024px)
 the_post_thumbnail( 'full' );          // Full resolution (original size uploaded)
+add_image_size( 'slide-size', 2500, 600, true ); // configura el tamaño que deben tener las imagenes para el slide
 
 // Agrega soporte para los tipo de contenido que es soportado de manera nativa por wordpress
 add_theme_support( 'post-formats',  array( 'aside', 'gallery', 'quote', 'image', 'video' ) );

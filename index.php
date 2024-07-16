@@ -1,4 +1,4 @@
-  <?php get_header() ?>
+  <?php get_header()?>
 
   <!-- slider -->
   <div class="grid-container full">
@@ -13,7 +13,7 @@
 
             <ul class="orbit-container">
               <?php
-                // WP_Query arguments
+               // WP_Query arguments
                 $args = array(
                   'post_type'              => array( 'post' ),
                   'nopaging'               => false,
@@ -28,8 +28,8 @@
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
               <li class="is-active orbit-slide">
                 <figure class="orbit-figure">
-                  <?php the_post_thumbnail('post-thumbnail', ['class' => 'orbir-image', 'title' => 'Feature image']); ?>
-                  <!--<figcaption class="orbit-caption"><?php the_excerpt(); ?></figcaption>-->
+                  <?php the_post_thumbnail( 'slide-size' ); ?>
+                  <figcaption class="orbit-caption"><?php the_excerpt(); ?></figcaption>
                 </figure>
               </li>
               <?php endwhile; ?>
@@ -70,7 +70,7 @@
           <div class="large-6 cell">
             <div class="card noticia-grid">
               <a href="<?php the_permalink(); ?>">
-                <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); ?>
+                <?php the_post_thumbnail('large', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); ?>
               </a>
               <div class="card-section">
                 <a href="<?php the_permalink(); ?>">

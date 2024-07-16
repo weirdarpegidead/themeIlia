@@ -13,7 +13,7 @@
                 <?php next_post_link( '%link','Post siguiente <i class="fa-solid fa-chevron-right"></i>' ); ?>
               </div>
               <div class="large-12 cell">
-                <?php the_post_thumbnail('full', ['class' => 'float-center', 'title' => 'Feature image']); ?>
+                <?php the_post_thumbnail('large', ['class' => 'float-center', 'title' => 'Feature image']); ?>
                 <?php   the_title('<h1>','</h1>');
                   the_content();
                 ?>
