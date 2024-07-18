@@ -100,6 +100,10 @@ p {
 .wp-block-woocommerce-customer-account span.label {
   display: none;
 }
+:where(.wc-block-mini-cart__badge) {
+background-color: tomato !important;
+color: white !important;
+}
 /* sidebar */
 .sidebar ul li a::before {
   font: var(--fa-font-solid);
