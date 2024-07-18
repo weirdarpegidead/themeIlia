@@ -43,16 +43,16 @@ p {
   /* background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; */
-  padding: 20px 60px 20px 0;
+  padding: 1rem 0 1rem 0;
 }
 /* menu principal */
 .header ul.menu {
-  margin-top: 1.55rem;
+  margin-top: 1rem;
 }
 .header ul.nav li a {
   color: #222934;
-  padding: 1rem 2rem 1rem 2rem;
-  font-size: 1rem;
+  padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
 }
@@ -89,9 +89,16 @@ p {
 .social .menu .icon {
   color: #212326;
 }
-/*slide*/
+/* slide */
 .orbit-caption p {
   color: #ffffff;
+}
+/* woocommerce */
+.carrito {
+  padding-top: 1rem;
+}
+.wp-block-woocommerce-customer-account span.label {
+  display: none;
 }
 /* sidebar */
 .sidebar ul li a::before {

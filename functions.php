@@ -126,6 +126,16 @@ function themeilia_widgets_init() {
 		'before_title'  => false,
 		'after_title'   => false,
 	) );
+    // carrito
+    register_sidebar( array(
+		'name'          => __( 'carrito', 'Theme Ilia' ),
+		'id'            => 'carrito',
+		'before_widget' => '<div class="carrito">',
+		'after_widget'  => '</div>',
+		'before_title'  => false,
+		'after_title'   => false,
+	) );
+
     // Registrar áreas de widgets del footer
     for ($i = 1; $i <= 4; $i++) {
         register_sidebar(array(

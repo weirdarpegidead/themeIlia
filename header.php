@@ -79,12 +79,19 @@
       <!-- menu principal -->
       <?php wp_nav_menu( array( 
         'theme_location' => 'header-menu',
-        'menu_class'		=> 'dropdown menu align-right nav',
-        'container_class'	=> 'large-10 medium-7 cell show-for-medium',
+        'menu_class'		=> 'dropdown menu align-left nav',
+        'container_class'	=> 'auto cell show-for-medium',
         'items_wrap' => '<ul id="%1$s" class="%2$s" data-dropdown-menu>%3$s</ul>',
         ));
       ?>
       <!-- fin menu principal-->
+
+      <!-- carrito -->
+      <div class="shrink cell">
+        <?php dynamic_sidebar( 'carrito' ); ?>
+      </div>
+      <!-- fin carrito -->
+
 
       <!-- mini menu -->
       <div class="small-12 cell hide-for-large hide-for-medium">
