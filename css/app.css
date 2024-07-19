@@ -101,8 +101,8 @@ p {
   display: none;
 }
 :where(.wc-block-mini-cart__badge) {
-background-color: tomato !important;
-color: white !important;
+background-color: #ff5f58 !important;
+color: #ffffff !important;
 }
 /* sidebar */
 .sidebar ul li a::before {

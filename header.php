@@ -67,7 +67,7 @@
     <div class="grid-x grid-margin-x header">
 
       <!-- logo -->
-      <div class="large-2 medium-3 cell logo">
+      <div class="large-2 medium-3 small-9 cell logo">
         <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
           the_custom_logo();
           } else { ?>
@@ -112,3 +112,53 @@
     </div>
   </div>
   <!-- fin header -->
+
+  <?php if ( is_front_page() ) :?>
+
+  <!-- slider -->
+  <div class="grid-container full show-for-medium">
+    <div class="grid-x">
+      <div class="large-12 cell">
+        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+          <div class="orbit-wrapper">
+            <div class="orbit-controls">
+              <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+              <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+            </div>
+
+            <ul class="orbit-container">
+              <?php
+               // WP_Query arguments
+                $args = array(
+                  'post_type'              => array( 'post' ),
+                  'nopaging'               => false,
+                  'posts_per_page'         => '5',
+                  'order'                  => 'DESC',
+                  'orderby'                => 'date',
+                  'category_name'          => 'slider',
+                );
+                // The Query
+                $the_query = new WP_Query( $args ); ?>
+              <?php if ( $the_query->have_posts() ) : ?>
+              <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+              <li class="is-active orbit-slide">
+                <figure class="orbit-figure">
+                  <?php the_post_thumbnail( 'slide-size' ); ?>
+                  <figcaption class="orbit-caption"><?php the_excerpt(); ?></figcaption>
+                </figure>
+              </li>
+              <?php endwhile; ?>
+            </ul>
+
+            <?php wp_reset_postdata(); ?>
+            <?php else : ?>
+            <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin slider-->
+
+  <?php else : endif; ?>
