@@ -1,16 +1,19 @@
 <?php 
 /* Template Name: Noticias */ 
 ?>
-<?php get_header()?>
+<?php get_header() ?>
+
 <!-- contenido principal -->
 <div class="grid-container contenido">
   <div class="grid-x grid-padding-x">
     <div class="large-12 cell">
       <h1 class="text-center">Noticias</h1>
     </div>
+
     <!-- Noticias -->
     <div class="large-12 cell convenios">
       <div class="grid-x grid-padding-x">
+
         <?php
           // WP_Query arguments
           $args = array(
@@ -22,6 +25,7 @@
           );
           // The Query
           $the_query = new WP_Query( $args ); ?>
+
         <?php if ( $the_query->have_posts() ) : ?>
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
         <div class="large-12 cell convenio-grid">
@@ -54,14 +58,17 @@
         </div>
         <?php endwhile; ?>
       </div>
+
       <!-- paginacion -->
       <?php the_posts_pagination( array(
         'class'       => 'pagination',
         'aria_label'  => 'Pagination',
       ) ); ?>
       <!-- fin paginacion -->
+
     </div>
     <!-- fin Noticias -->
+
     <?php wp_reset_postdata(); ?>
     <?php else : ?>
       <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
@@ -69,4 +76,5 @@
   </div>
 </div>
 <!-- fin contenido principal -->
-<?php get_footer()?>
+
+<?php get_footer() ?>

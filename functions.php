@@ -4,6 +4,7 @@
 // (function ($) {
 //    $(document).foundation() // linea original
 // })(jQuery);
+
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
 function add_theme_scripts() {
     wp_enqueue_style( 'foundation', get_parent_theme_file_uri('/css/foundation.css') );
