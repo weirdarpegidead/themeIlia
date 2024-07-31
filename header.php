@@ -5,15 +5,15 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    <?php
-        if (is_home() || is_front_page()) {
+
+    <?php if (is_home() || is_front_page()) {
             // Homepage 
-            echo bloginfo('description');
-        } else { 
+            echo bloginfo('description'); 
+          } else { 
             // Not homepage
-            echo bloginfo('name').' | '.get_the_title();
-        } 
+          echo bloginfo('name').' | '.get_the_title(); } 
     ?>
+      
   </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <?php wp_head()?>
@@ -71,7 +71,7 @@
         <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
           the_custom_logo();
           } else { ?>
-          <img src="<?php echo esc_url( get_parent_theme_file_uri( 'img/logo-anop-2.png' ) ); ?>" alt="" />
+          <img src="<?php echo esc_url( get_parent_theme_file_uri( 'img/ORlogo.png' ) ); ?>" alt="" />
         <?php } ?>
       </div>
       <!-- fin logo -->
