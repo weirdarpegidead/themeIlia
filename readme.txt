@@ -37,3 +37,6 @@ Características ThemeIlia
 9. Tamaños de imagen custom:
     a. las imagenes que su suben al manager de medios disponen de 6 tamaños automaticos.
     b. se crea una version recortada de 2500 x 600 de las imagenes, llamada "slide-size".
+
+10. Layout custom:
+    a. Layout puede ser normal o full-width.

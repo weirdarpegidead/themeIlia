@@ -1,7 +1,8 @@
     <?php get_header() ?>
 
     <!-- contenido principal -->
-    <div class="grid-container contenido">
+    <?php $layout_class = get_theme_mod('mytheme_layout_setting', 'normal') === 'full' ? 'grid-container-full' : 'grid-container'; ?>  
+    <div class="<?php echo esc_attr($layout_class); ?> contenido">
       <div class="grid-x grid-padding-x">
         <div class="large-9 medium-9 cell">
 

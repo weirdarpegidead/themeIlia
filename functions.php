@@ -9,6 +9,7 @@ add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
 function add_theme_scripts() {
     wp_enqueue_style( 'foundation', get_parent_theme_file_uri('/css/foundation.css') );
     wp_enqueue_style( 'app', get_parent_theme_file_uri('/css/app.css') );
+
     wp_enqueue_script( 'jquery', get_parent_theme_file_uri('/js/vendor/jquery.js'), array(), 3.7, true );
     wp_enqueue_script( 'what-input', get_template_directory_uri() . '/js/vendor/what-input.js', array(), 5.2, true );
     wp_enqueue_script( 'foundation', get_template_directory_uri() . '/js/vendor/foundation.js', array(), 1.0, true );
@@ -90,11 +91,50 @@ function mytheme_customize_register( $wp_customize ) {
             4 => __('4 columnas', 'mytheme'),
         ),
     ));
+
+    // Añadir una sección para el layout
+    $wp_customize->add_section('mytheme_layout_section', array(
+        'title'       => __('Layout Settings', 'mytheme'),
+        'priority'    => 30,
+        'capability'  => 'edit_theme_options',
+        'description' => __('Change the layout of the page.', 'mytheme'),
+    ));
+
+    // Añadir la opción de layout
+    $wp_customize->add_setting('mytheme_layout_setting', array(
+        'default'           => 'normal',
+        'capability'        => 'edit_theme_options',
+        'sanitize_callback' => 'mytheme_sanitize_layout',
+    ));
+
+    $wp_customize->add_control('mytheme_layout_control', array(
+        'label'    => __('Select Layout', 'mytheme'),
+        'section'  => 'mytheme_layout_section',
+        'settings' => 'mytheme_layout_setting',
+        'type'     => 'radio',
+        'choices'  => array(
+            'normal' => __('Normal', 'mytheme'),
+            'full'   => __('Full Width', 'mytheme'),
+        ),
+    ));
+
+
 }
 function mytheme_sanitize_position($input) {
     $valid = array('left', 'right');
     return in_array($input, $valid) ? $input : 'right';
 }
+
+function mytheme_sanitize_layout($input) {
+    $valid = array('normal', 'full');
+
+    if (in_array($input, $valid, true)) {
+        return $input;
+    }
+
+    return 'normal';
+}
+
 add_action('customize_register', 'mytheme_customize_register');
 
 // Registra y configura los sidebar para ser usados con widgets 

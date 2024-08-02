@@ -21,6 +21,7 @@
 
 <body>
   <!-- header -->
+  <?php $layout_class = get_theme_mod('mytheme_layout_setting', 'normal') === 'full' ? 'grid-container-full' : 'grid-container'; ?>  
   <div class="grid-container-full">
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell social">
@@ -63,7 +64,7 @@
     </div>
   </div>
 
-  <div class="grid-container">
+  <div class="<?php echo esc_attr($layout_class); ?>">
     <div class="grid-x grid-margin-x header">
 
       <!-- logo -->

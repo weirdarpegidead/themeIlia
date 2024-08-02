@@ -1,8 +1,10 @@
 <!-- footer -->
+
+<?php $layout_class = get_theme_mod('mytheme_layout_setting', 'normal') === 'full' ? 'grid-container-full' : 'grid-container'; ?>  
 <div class="grid-container-full footer">
   <div class="grid-x grid-padding-x">
     <div class="large-12 cell">
-      <div class="grid-container">
+      <div class="<?php echo esc_attr($layout_class); ?>">
         <div class="grid-x grid-padding-x">
 
           <?php $footer_columns = get_theme_mod('footer_columns', 4);
@@ -22,7 +24,7 @@
 <div class="grid-container-full footer-pie">
   <div class="grid-x grid-padding-x">
     <div class="large-12 cell">
-      <div class="grid-container">
+      <div class="<?php echo esc_attr($layout_class); ?>">
         <div class="grid-x grid-padding-x">
 
           <?php dynamic_sidebar( 'Pie de Pagina' ); ?>
