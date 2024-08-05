@@ -29,7 +29,7 @@ function mytheme_custom_logo_setup() {
 }
 add_action('after_setup_theme', 'mytheme_custom_logo_setup');
 
-// controla los links sociales
+// Controla las adiciones al menu de personalizacion
 function mytheme_customize_register( $wp_customize ) {
     // Sección para los enlaces sociales
     $wp_customize->add_section('social_links_section', array(
@@ -94,10 +94,10 @@ function mytheme_customize_register( $wp_customize ) {
 
     // Añadir una sección para el layout
     $wp_customize->add_section('mytheme_layout_section', array(
-        'title'       => __('Layout Settings', 'mytheme'),
+        'title'       => __('Configuracion de Layout', 'mytheme'),
         'priority'    => 30,
         'capability'  => 'edit_theme_options',
-        'description' => __('Change the layout of the page.', 'mytheme'),
+        'description' => __('Cambia el layout de la pagina.', 'mytheme'),
     ));
 
     // Añadir la opción de layout
@@ -108,7 +108,7 @@ function mytheme_customize_register( $wp_customize ) {
     ));
 
     $wp_customize->add_control('mytheme_layout_control', array(
-        'label'    => __('Select Layout', 'mytheme'),
+        'label'    => __('Selecciona el Layout', 'mytheme'),
         'section'  => 'mytheme_layout_section',
         'settings' => 'mytheme_layout_setting',
         'type'     => 'radio',
@@ -118,22 +118,65 @@ function mytheme_customize_register( $wp_customize ) {
         ),
     ));
 
+    // Añadir una sección para la alineación del menú
+    $wp_customize->add_section('mytheme_menu_layout_section', array(
+        'title'       => __('Alineacion de Menu', 'mytheme'),
+        'priority'    => 31,  // Asegúrate de que sea un valor único
+        'capability'  => 'edit_theme_options',
+        'description' => __('Cambia la alineacion del Menu Principal.', 'mytheme'),
+    ));
 
-}
-function mytheme_sanitize_position($input) {
-    $valid = array('left', 'right');
-    return in_array($input, $valid) ? $input : 'right';
+    // Añadir la opción de alineación del menú
+    $wp_customize->add_setting('mytheme_menu_alignment_setting', array(
+        'default'           => 'align-left',
+        'capability'        => 'edit_theme_options',
+        'sanitize_callback' => 'mytheme_sanitize_alignment',
+    ));
+
+    $wp_customize->add_control('mytheme_menu_alignment_control', array(
+        'label'    => __('Selecciona la Alineacion del Menu', 'mytheme'),
+        'section'  => 'mytheme_menu_layout_section',
+        'settings' => 'mytheme_menu_alignment_setting',
+        'type'     => 'radio',
+        'choices'  => array(
+            'align-left'  => __('Izquierda', 'mytheme'),
+            'align-right' => __('Derecha', 'mytheme'),
+        ),
+    ));
 }
 
+add_action('customize_register', 'mytheme_customize_register');
+
+// Sanitizar la opción de layout
 function mytheme_sanitize_layout($input) {
     $valid = array('normal', 'full');
 
     if (in_array($input, $valid, true)) {
         return $input;
     }
-
     return 'normal';
 }
+
+// Sanitizar la opción de alineación del menú
+function mytheme_sanitize_alignment($input) {
+    $valid = array('align-left', 'align-right');
+
+    if (in_array($input, $valid, true)) {
+        return $input;
+    }
+    return 'align-left';
+}
+
+// Sanitizar la posición del menú social
+function mytheme_sanitize_position($input) {
+    $valid = array('left', 'right');
+
+    if (in_array($input, $valid, true)) {
+        return $input;
+    }
+    return 'right';
+}
+
 
 add_action('customize_register', 'mytheme_customize_register');
 

@@ -20,8 +20,9 @@ Características ThemeIlia
 
 5. Navegacion custom:
     a. navegacion principal soportada.
-    b. navegacion resposive soportada.
-    c. navegacion mediante widget dinamico soportada.
+    b. alinacion de navegacion principal custom soportada.
+    c. navegacion resposive soportada.
+    d. navegacion mediante widget dinamico soportada.
 
 6. sidebar custom:
     a. home sidebar soportado.

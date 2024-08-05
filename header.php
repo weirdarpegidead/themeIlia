@@ -22,6 +22,8 @@
 <body>
   <!-- header -->
   <?php $layout_class = get_theme_mod('mytheme_layout_setting', 'normal') === 'full' ? 'grid-container-full' : 'grid-container'; ?>  
+  <?php $menu_alignment_class = get_theme_mod('mytheme_menu_alignment_setting', 'align-left'); ?>
+
   <div class="grid-container-full">
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell social">
@@ -80,7 +82,7 @@
       <!-- menu principal -->
       <?php wp_nav_menu( array( 
         'theme_location' => 'header-menu',
-        'menu_class'		=> 'dropdown menu align-left nav',
+        'menu_class'		=> 'dropdown menu nav '. esc_attr($menu_alignment_class),
         'container_class'	=> 'auto cell show-for-medium',
         'items_wrap' => '<ul id="%1$s" class="%2$s" data-dropdown-menu>%3$s</ul>',
         ));
