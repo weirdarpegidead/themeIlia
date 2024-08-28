@@ -1,9 +1,11 @@
 <?php
 // Agrega los scripts css y javascripts correspondientes en el header y footer.
 // Se hizo el siguiente cambio en app.js para que pudiese funcionar correctamente:
+//
 // (function ($) {
 //    $(document).foundation() // linea original
 // })(jQuery);
+//
 
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
 function add_theme_scripts() {

@@ -20,10 +20,11 @@
 </head>
 
 <body>
-  <!-- header -->
+
   <?php $layout_class = get_theme_mod('mytheme_layout_setting', 'normal') === 'full' ? 'grid-container-full' : 'grid-container'; ?>  
   <?php $menu_alignment_class = get_theme_mod('mytheme_menu_alignment_setting', 'align-left'); ?>
 
+  <!-- header -->
   <div class="grid-container-full">
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell social">
@@ -74,7 +75,7 @@
         <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
           the_custom_logo();
           } else { ?>
-          <img src="<?php echo esc_url( get_parent_theme_file_uri( 'img/ORlogo.png' ) ); ?>" alt="" />
+          <img src="<?php echo esc_url( get_parent_theme_file_uri( 'img/ORlogo.png' ) ); ?>" alt="Default Logo" />
         <?php } ?>
       </div>
       <!-- fin logo -->
