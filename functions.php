@@ -40,7 +40,7 @@ function mytheme_customize_register( $wp_customize ) {
     ));
 
     // Campos para los enlaces sociales
-    $social_networks = array('facebook', 'twitter', 'youtube', 'linkedin', 'instagram', 'pinterest'); // Añade más redes si es necesario
+    $social_networks = array('facebook', 'twitter', 'youtube', 'linkedin', 'instagram', 'pinterest', 'whatsapp'); // Añade más redes si es necesario
 
     foreach ($social_networks as $network) {
         $wp_customize->add_setting("{$network}_link", array(

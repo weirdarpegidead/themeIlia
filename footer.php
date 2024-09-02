@@ -38,7 +38,8 @@
                 'youtube'   => 'fa-youtube',
                 'linkedin'  => 'fa-linkedin',
                 'instagram' => 'fa-instagram',
-                'pinterest' => 'fa-pinterest'
+                'pinterest' => 'fa-pinterest',
+                'whatsapp'  => 'fa-whatsapp'
                 );
                 foreach ($social_networks as $network => $icon) {
                 $link = get_theme_mod("{$network}_link");
