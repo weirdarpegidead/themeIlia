@@ -52,7 +52,7 @@
           foreach ($social_networks as $network => $icon) {
             $link = get_theme_mod("{$network}_link");
             if ($link) {
-              echo '<li><a href="' . esc_url($link) . '" class="icon"><i class="fa-brands ' . esc_attr($icon) . '"></i></a></li>';
+              echo '<li><a href="' . esc_url($link) . '" class="icon" target="_blank" ><i class="fa-brands ' . esc_attr($icon) . '"></i></a></li>';
             }}
         ?>
         </ul>
