@@ -2,7 +2,7 @@
 #222934 // color texto normal con fondo claro
 #777C80 // color texto normal footer
 #D2D3D5 // iconos sociales y links con fondo oscuro
-#1C242D // background footer
+#37383A // background footer
 #178FD9 // color principal
 */
 
@@ -249,7 +249,7 @@ color: #ffffff !important;
 
 .footer {
   padding: 30px 0;
-  background-color: #212326;
+  background-color: #37383A;
 }
 
 .footer .menu {
