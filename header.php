@@ -68,7 +68,7 @@
     </div>
   </div>
 
-  <div class="<?php echo esc_attr($layout_class); ?>">
+  <div class="<?php //echo esc_attr($layout_class); ?> grid-container">
     <div class="grid-x grid-margin-x header">
 
       <!-- logo -->
