@@ -27,7 +27,9 @@
       <div class="<?php echo esc_attr($layout_class); ?>">
         <div class="grid-x grid-padding-x">
 
-          <?php dynamic_sidebar( 'Pie de Pagina' ); ?>
+          <div class="large-7 medium-7 cell">
+            <?php dynamic_sidebar( 'Pie de Pagina' ); ?>
+          </div>
 
           <div class="large-5 medium-5 cell social">
             <ul class="menu align-right">

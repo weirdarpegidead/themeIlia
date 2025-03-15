@@ -1,0 +1,37 @@
+.wp-block-column.is-style-paddingtext {
+  padding: 0 1.75rem 0 1.75rem;
+}
+.is-style-grid-container {
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media print, screen and (min-width: 40em) {
+  .is-style-grid-container {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+  }
+}
+.is-style-grid-container.fluid {
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media print, screen and (min-width: 40em) {
+  .is-style-grid-container.fluid {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+  }
+}
+.is-style-grid-container.full {
+  padding-right: 0;
+  padding-left: 0;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+

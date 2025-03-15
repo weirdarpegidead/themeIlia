@@ -316,3 +316,52 @@ color: #ffffff !important;
   color: #d3d3d4;
 }
 
+/* tabs */
+.tabs {
+  border-top: 1px solid #e6e6e6 !important;
+  border-bottom: 1px solid #e6e6e6 !important;
+  border-left: 1px solid #e6e6e6 !important;
+  border-right: 0px solid #e6e6e6 !important;
+}
+.tabs-content.vertical {
+  border: 1px solid transparent;
+  border-left: 0;
+}
+.tabs-title > a {
+  font-size: 0.75rem;
+  color: #222934 !important;
+  background-color: #e6e6e6;
+}
+.tabs-title > a:focus, .tabs-title > a[aria-selected=true] {
+  background: #fff !important;
+  color: #222934 !important;
+}
+/* acordeon */
+.accordion {
+  margin-top: 0;
+}
+.accordion-title {
+  padding: 1.25rem 3.25rem !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #e6e6e6 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  font-size: inherit !important;
+  color: #222934 !important;
+}
+.accordion-title::before {
+  left: 1rem !important;
+  margin-top: -0.7rem !important;
+  font-weight: bold;
+  background-color: black;
+  width: 16px;
+  padding: 4px 18px 6px 9px;
+  color: #fff;
+}
+.is-active > .accordion-title::before {
+  background-color: #95C149;
+}
+.accordion-content {
+  border: 0 !important;
+}
+

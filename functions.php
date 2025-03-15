@@ -6,17 +6,104 @@
 //    $(document).foundation() // linea original
 // })(jQuery);
 //
-
+// estilos y js
 add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
 function add_theme_scripts() {
     wp_enqueue_style( 'foundation', get_parent_theme_file_uri('/css/foundation.css') );
     wp_enqueue_style( 'app', get_parent_theme_file_uri('/css/app.css') );
-
     wp_enqueue_script( 'jquery', get_parent_theme_file_uri('/js/vendor/jquery.js'), array(), 3.7, true );
     wp_enqueue_script( 'what-input', get_template_directory_uri() . '/js/vendor/what-input.js', array(), 5.2, true );
     wp_enqueue_script( 'foundation', get_template_directory_uri() . '/js/vendor/foundation.js', array(), 1.0, true );
     wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.js', array(), 1.0, true );
+    wp_enqueue_script( 'themeslug-lista-icono', get_template_directory_uri() . '/js/lista-icono.js', array(), '1.0.0', true );
 }
+
+// font-awesome
+function themeslug_enqueue_font_awesome() {
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', array(), '6.0.0' );
+}
+add_action( 'wp_enqueue_scripts', 'themeslug_enqueue_font_awesome' );
+
+// soporte para block styles
+add_action( 'init', 'themeslug_enqueue_block_styles' );
+
+function themeslug_enqueue_block_styles() {
+	wp_enqueue_block_style( 'core/image', array(
+		'handle' => 'themeslug-block-image',
+		'src'    => get_theme_file_uri( "assets/blocks/core-image.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-image.css" )
+	) );
+  wp_enqueue_block_style( 'core/columns', array(
+		'handle' => 'themeslug-block-columns',
+		'src'    => get_theme_file_uri( "assets/blocks/core-columns.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-columns.css" )
+	) );
+	/* wp_enqueue_block_style( 'core/columns', array(*/
+	/*	'handle' => 'themeslug-block-columns',*/
+	/*	'src'    => get_theme_file_uri( "css/foundation.css" ),*/
+	/*	'path'   => get_theme_file_path( "css/foundation.css" )*/
+	/*) );*/
+  wp_enqueue_block_style( 'core/column', array(
+		'handle' => 'themeslug-block-column',
+		'src'    => get_theme_file_uri( "assets/blocks/core-column.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-column.css" )
+	) );
+  wp_enqueue_block_style( 'core/list', array(
+		'handle' => 'themeslug-block-list',
+		'src'    => get_theme_file_uri( "assets/blocks/core-list.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-list.css" )
+	) );
+}
+// registro de block styles
+add_action( 'init', 'themeslug_register_block_styles' );
+function themeslug_register_block_styles() {
+	register_block_style( 'core/image', array(
+    'name'         => 'hand-drawn',
+    'label'        => __( 'Hand Drawn', 'themeslug' ),
+    'style_handle' => '.wp-block-image.is-style-hand-drawn img'
+  ) );
+  register_block_style( 'core/image', array(
+    'name'         => 'round5',
+    'label'        => __( 'Round 5px', 'themeslug' ),
+    'style_handle' => '.wp-block-image.is-style-round5 img'
+  ) );
+  register_block_style( 'core/image', array(
+    'name'         => 'round10',
+    'label'        => __( 'Round 10px', 'themeslug' ),
+    'style_handle' => '.wp-block-image.is-style-round10 img'
+  ) );
+  register_block_style( 'core/image', array(
+    'name'         => 'opacity',
+    'label'        => __( 'Opacidad .9', 'themeslug' ),
+    'style_handle' => '.wp-block-image.is-style-opacity img'
+  ) );
+  register_block_style( 'core/columns', array(
+    'name'         => 'grid-container',
+    'label'        => __( 'Box Container', 'themeslug' ),
+    'style_handle' => 'is-style-grid-container'
+  ) );
+  register_block_style( 'core/column', array(
+    'name'         => 'opacity',
+    'label'        => __( 'Opacity .9', 'themeslug' ),
+    'style_handle' => '.is-style-opacity'
+  ) );
+  register_block_style( 'core/column', array(
+    'name'         => 'paddingtext',
+    'label'        => __( 'Padding Texto', 'themeslug' ),
+    'style_handle' => '.wp-block-column.is-style-paddingtext'
+  ) );
+  register_block_style( 'core/list', array(
+    'name'         => 'lista-icono',
+    'label'        => __( 'Lista con Ícono', 'themeslug' ),
+    'inline_style' => ' .is-style-lista-icono',
+  ) );
+}
+
+// soporte oara custom background
+$args = array(
+	'default-color' => 'ffffff',
+);
+add_theme_support( 'custom-background', $args );
 
 // soporte para logo dinamico
 function mytheme_custom_logo_setup() {
@@ -40,7 +127,15 @@ function mytheme_customize_register( $wp_customize ) {
     ));
 
     // Campos para los enlaces sociales
-    $social_networks = array('facebook', 'twitter', 'youtube', 'linkedin', 'instagram', 'pinterest', 'whatsapp'); // Añade más redes si es necesario
+  $social_networks = array(
+    'facebook',
+    'twitter',
+    'youtube',
+    'linkedin',
+    'instagram',
+    'pinterest',
+    'whatsapp'
+  );
 
     foreach ($social_networks as $network) {
         $wp_customize->add_setting("{$network}_link", array(
@@ -207,8 +302,8 @@ function themeilia_widgets_init() {
     register_sidebar( array(
 		'name'          => __( 'Pie de Pagina', 'Theme Ilia' ),
 		'id'            => 'piePagina',
-		'before_widget' => '<div class="large-7 medium-7 cell">',
-		'after_widget'  => '</div>',
+		'before_widget' => false,
+		'after_widget'  => false,
 		'before_title'  => false,
 		'after_title'   => false,
 	) );

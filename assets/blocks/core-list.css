@@ -1,0 +1,19 @@
+.is-style-lista-icono {
+  list-style: none;
+  padding-left: 0;
+}
+.is-style-lista-icono li {
+  position: relative;
+  padding-left: 2.5em; /* Space for the icon */
+  margin-bottom: 1.5em; /* Adjust spacing between items */
+}
+.is-style-lista-icono li::before {
+  content: "\f058"; /* Font Awesome check-circle icon */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 2em; /* Adjust icon size */
+  color: #95C149; /* Customize the icon color */
+  position: absolute;
+  left: 0;
+  top: -0.4em; /* Adjust vertical alignment */
+}

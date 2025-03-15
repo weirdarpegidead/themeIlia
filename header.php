@@ -5,7 +5,6 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-
     <?php if (is_home() || is_front_page()) {
             // Homepage 
             echo bloginfo('description'); 
@@ -13,9 +12,7 @@
             // Not homepage
           echo bloginfo('name').' | '.get_the_title(); } 
     ?>
-      
   </title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <?php wp_head()?>
 </head>
 
@@ -25,52 +22,55 @@
   <?php $menu_alignment_class = get_theme_mod('mytheme_menu_alignment_setting', 'align-left'); ?>
 
   <!-- header -->
-  <div class="grid-container-full">
+  <div class="grid-container-full social">
     <div class="grid-x grid-padding-x">
-      <div class="large-12 cell social">
-
-        <!-- menu social -->
-        <?php
-          $menu_position = get_theme_mod('social_menu_position');
-          if ($menu_position == 'left') {
-            echo '<div class="large-12 cell">';
-          } else {
-            echo '<div class="large-12 cell">';
-          }
-        ?>
-        <ul class="menu align-<?php echo esc_attr($menu_position); ?>">
-        <?php
-          $social_networks = array(
-            'facebook'  => 'fa-facebook-f',
-            'twitter'   => 'fa-twitter',
-            'youtube'   => 'fa-youtube',
-            'linkedin'  => 'fa-linkedin',
-            'instagram' => 'fa-instagram',
-            'pinterest' => 'fa-pinterest',
-            'whatsapp'  => 'fa-whatsapp'
-          );
-          foreach ($social_networks as $network => $icon) {
-            $link = get_theme_mod("{$network}_link");
-            if ($link) {
-              echo '<li><a href="' . esc_url($link) . '" class="icon" target="_blank" ><i class="fa-brands ' . esc_attr($icon) . '"></i></a></li>';
-            }}
-        ?>
-        </ul>
-        <?php if ($menu_position == 'left') {
-            echo '</div>';
-          } else {
-            echo '</div>';
-          }
-        ?>
-        <!-- fin menu social -->
-
+      <div class="large-12 cell">
+        <div class="<?php echo esc_attr($layout_class); ?>">
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <!-- menu social -->
+              <?php
+                $menu_position = get_theme_mod('social_menu_position');
+                if ($menu_position == 'left') {
+                  echo '<div class="large-12 cell">';
+                } else {
+                  echo '<div class="large-12 cell">';
+                }
+              ?>
+              <ul class="menu align-<?php echo esc_attr($menu_position); ?>">
+              <?php
+                $social_networks = array(
+                  'facebook'  => 'fa-facebook-f',
+                  'twitter'   => 'fa-twitter',
+                  'youtube'   => 'fa-youtube',
+                  'linkedin'  => 'fa-linkedin',
+                  'instagram' => 'fa-instagram',
+                  'pinterest' => 'fa-pinterest',
+                  'whatsapp'  => 'fa-whatsapp'
+                );
+                foreach ($social_networks as $network => $icon) {
+                  $link = get_theme_mod("{$network}_link");
+                  if ($link) {
+                    echo '<li><a href="' . esc_url($link) . '" class="icon" target="_blank" ><i class="fa-brands ' . esc_attr($icon) . '"></i></a></li>';
+                  }}
+              ?>
+              </ul>
+              <?php if ($menu_position == 'left') {
+                  echo '</div>';
+                } else {
+                  echo '</div>';
+                }
+              ?>
+              <!-- fin menu social -->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="<?php //echo esc_attr($layout_class); ?> grid-container">
+  <div class="<?php echo esc_attr($layout_class); ?>">
     <div class="grid-x grid-margin-x header">
-
       <!-- logo -->
       <div class="large-2 medium-3 small-9 cell logo">
         <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
@@ -80,7 +80,6 @@
         <?php } ?>
       </div>
       <!-- fin logo -->
-
       <!-- menu principal -->
       <?php wp_nav_menu( array( 
         'theme_location' => 'header-menu',
@@ -90,14 +89,11 @@
         ));
       ?>
       <!-- fin menu principal-->
-
       <!-- carrito -->
       <div class="shrink cell">
         <?php dynamic_sidebar( 'carrito' ); ?>
       </div>
       <!-- fin carrito -->
-
-
       <!-- mini menu -->
       <div class="small-12 cell hide-for-large hide-for-medium">
         <ul class="vertical menu accordion-menu" data-accordion-menu>
@@ -113,14 +109,12 @@
         </ul>
       </div>
       <!-- fin mini menu -->
-
     </div>
   </div>
   <!-- fin header -->
 
-  <?php if ( is_front_page() ) :?>
-
   <!-- slider -->
+  <?php if ( is_front_page() ) :?>
   <div class="grid-container full show-for-medium">
     <div class="grid-x">
       <div class="large-12 cell">
@@ -148,8 +142,7 @@
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
               <li class="is-active orbit-slide">
                 <figure class="orbit-figure">
-                  <?php the_post_thumbnail( 'slide-size' ); ?>
-                  <figcaption class="orbit-caption"><?php the_excerpt(); ?></figcaption>
+                  <?php the_content(); ?>
                 </figure>
               </li>
               <?php endwhile; ?>
