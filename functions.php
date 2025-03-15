@@ -24,6 +24,96 @@ function themeslug_enqueue_font_awesome() {
 }
 add_action( 'wp_enqueue_scripts', 'themeslug_enqueue_font_awesome' );
 
+// Enqueue Google Fonts
+function theme_enqueue_google_fonts() {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Anaheim:wght@400;800&family=Antic&display=swap', array(), null);
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_google_fonts');
+
+// meter los fonts en el panel de apariencia
+function theme_customize_register($wp_customize) {
+    // Add a section for Font Settings
+    $wp_customize->add_section('font_settings', array(
+        'title'    => __('Font Settings', 'themeIlia'),
+        'priority' => 30,
+    ));
+
+    // Add settings and controls for each font
+    $elements = array(
+        'global' => 'Global Font',
+        'h1'     => 'Heading 1 (H1)',
+        'h2'     => 'Heading 2 (H2)',
+        'h3'     => 'Heading 3 (H3)',
+        'h4'     => 'Heading 4 (H4)',
+        'h5'     => 'Heading 5 (H5)',
+        'h6'     => 'Heading 6 (H6)',
+    );
+
+    foreach ($elements as $element => $label) {
+        // Add setting
+        $wp_customize->add_setting($element . '_font', array(
+            'default'   => 'Roboto',
+            'transport' => 'refresh',
+        ));
+
+        // Add control
+        $wp_customize->add_control($element . '_font', array(
+            'label'    => __($label, 'themeIlia'),
+            'section'  => 'font_settings',
+            'type'     => 'select',
+            'choices'  => array(
+                'Roboto'    => 'Roboto',
+                'Open Sans' => 'Open Sans',
+                'Anaheim'   => 'Anaheim',
+                'Antic'     => 'Antic',
+                // Add more fonts here
+            ),
+        ));
+    }
+}
+add_action('customize_register', 'theme_customize_register');
+
+// setar los fonts
+function theme_apply_custom_fonts() {
+    // Get the selected fonts from the Customizer
+    $global_font = get_theme_mod('global_font', 'Roboto');
+    $h1_font     = get_theme_mod('h1_font', 'Roboto');
+    $h2_font     = get_theme_mod('h2_font', 'Roboto');
+    $h3_font     = get_theme_mod('h3_font', 'Roboto');
+    $h4_font     = get_theme_mod('h4_font', 'Roboto');
+    $h5_font     = get_theme_mod('h5_font', 'Roboto');
+    $h6_font     = get_theme_mod('h6_font', 'Roboto');
+
+    // Generate CSS
+    $css = "
+        body, p, ul, ol, li, a, span, div {
+            font-family: '{$global_font}', sans-serif;
+        }
+        h1 {
+            font-family: '{$h1_font}', sans-serif;
+        }
+        h2 {
+            font-family: '{$h2_font}', sans-serif;
+        }
+        h3 {
+            font-family: '{$h3_font}', sans-serif;
+        }
+        h4 {
+            font-family: '{$h4_font}', sans-serif;
+        }
+        h5 {
+            font-family: '{$h5_font}', sans-serif;
+        }
+        h6 {
+            font-family: '{$h6_font}', sans-serif;
+        }
+    ";
+
+    // Add inline styles
+    wp_add_inline_style('google-fonts', $css);
+}
+add_action('wp_enqueue_scripts', 'theme_apply_custom_fonts');
+
 // soporte para block styles
 add_action( 'init', 'themeslug_enqueue_block_styles' );
 
