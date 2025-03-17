@@ -4,8 +4,20 @@
   <?php $layout_class = get_theme_mod('mytheme_layout_setting', 'normal') === 'full' ? 'grid-container-full' : 'grid-container'; ?>  
   <div class="<?php echo esc_attr($layout_class); ?> contenido">
     <div class="grid-x grid-padding-x">
-      <div class="large-12 cell">
 
+      <!-- borrar luego -->
+      <div class="large-12 cell">
+        <p style="margin: 1.5rem 0 1.5rem 0;">En ILIA Consultores, impulsamos el crecimiento organizacional desde dos pilares clave: el Desarrollo Humano y la Innovación Tecnologica. Fortalecemos equipos con consultorías, servicios y metodologías de aprendizaje y capacitación innovadoras, mientras que nuestras soluciones tecnológicas optimizan la seguridad, la eficiencia en los procesos empresariales y los procesos de capacitación con herramientas avanzadas como realidad virtual, simulaciones interactivas, plataformas digitales y aplicaciones, ayudamos a las organizaciones a evolucionar en un entorno cada vez más dinámico.</p>
+      </div>
+      <div class="large-6 cell show-for-large">
+        <h2>Desarrollo Humano</h2>
+      </div>
+      <div class="large-6 cell show-for-large">
+        <h2>Innovación Tecnológica</h2>
+      </div>
+      <!--borrar luego-->
+
+      <div class="large-12 cell">
         <!-- noticias en dos columnas-->
         <div class="grid-x grid-padding-x" data-equalizer>
           <?php
@@ -34,7 +46,7 @@
             ?>
 
           <div class="large-6 cell">
-            <div class="card noticia-grid" data-equalizer-watch>
+            <div class="card noticia-grid redondo" data-equalizer-watch>
               <a href="<?php echo $link; ?>">
                 <?php the_post_thumbnail('large', ['class' => 'img-responsive responsive--full', 'title' => 'Feature image']); ?>
               </a>
